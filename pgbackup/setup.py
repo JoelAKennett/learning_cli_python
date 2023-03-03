@@ -6,11 +6,18 @@ with open('README.md', 'r') as f:
 setup(
   name = 'pgbackup',
   version = '0.1.0',
-  author = 'Joel Kennett'
+  author = 'Joel Kennett',
   author_email = 'Joel.Kennett185@gmail.com',
   description= "A utility for backing up PostgreSQL databases.",
   long_description = long_description,
   long_description_content_type = 'text/markdown',
   url = 'https://github.com/JoelAKennett/learning_cli_python',
-  packages = find_packages('src')
+  packages = find_packages('src'),
+  package_dir={'': 'src'},
+  install_required=['boto3'],
+  entry_points={
+    'console_scripts': [
+      'pgbackup=pgbackup.cli:main'
+    ],
+  },
 )
